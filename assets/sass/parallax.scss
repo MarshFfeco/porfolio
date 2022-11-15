@@ -1,0 +1,65 @@
+$images: (
+    "../../assets/image/parallax/bg0SKY.png", 
+    "../../assets/image/parallax/bg0moon-and-stars.png", 
+    "../../assets/image/parallax/bg01.png",
+    "../..//assets/image/parallax/bg02.png",
+);
+
+@mixin paralaxAnimation($isAnime: false, $paddin-inTop: 0vh) {
+    $i: 1;
+    $para: 13;
+    @each $image in $images {
+        .parallax-item-#{$i} {
+            width: 200%;
+            height: 100%;
+            position: absolute;
+            top: $paddin-inTop;
+            
+            background: url($image);
+            background-repeat: repeat-x;
+            background-size: 50%;
+            @if $isAnime {
+                animation: parallax $para + 0s linear infinite;
+            }
+        
+            z-index: $i;
+        }
+            $i: $i + 1;
+            $para: $para - $i;
+    }
+}
+
+#parallax {
+    width: 100vw; 
+    height: 100vh;
+
+    
+    background-color: #19335E;
+
+    image-rendering: pixelated;
+
+    $i: 1;
+    $para: 13;
+    &:hover {
+        @include paralaxAnimation($isAnime: true);
+    }
+
+    @include paralaxAnimation($isAnime: false);
+}
+
+@keyframes parallax {
+    from { transform: translateX(0%); }
+    to { transform: translateX(-50%); }
+}
+
+@media screen and (max-width: 600px) {
+    #parallax {
+        //padding-top: 6vh;
+
+        @include paralaxAnimation($isAnime: false, $paddin-inTop: 5);
+
+        &:hover {
+            @include paralaxAnimation($isAnime: false, $paddin-inTop: 6);
+        }
+    }
+}
