@@ -1,0 +1,113 @@
+$images: (
+    "../../assets/image/parallax/bg0sky.png",
+    "../../assets/image/parallax/bg0moon-and-stars.png",   
+    "../../assets/image/parallax/bg01.png",
+    "../../assets/image/parallax/bg02.png",
+    "../../assets/image/parallax/bg03.png",
+    "../../assets/image/parallax/bg04.png",
+    "../../assets/image/parallax/bg05.png",
+);
+
+.configParallax {
+    width: 200%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+
+@mixin paralaxAnimation() {
+    $i: 1;
+    @each $image in $images {
+        .parallax-item-#{$i} {
+            @extend .configParallax;
+            
+            background: url($image) repeat-x;
+            background-size: 50%;
+    
+            z-index: $i;
+        }
+            $i: $i + 1;
+    }
+}
+
+.parallax-container {
+    .container-PP {
+        width: 50px;
+        height: 50px;
+
+        position: absolute;
+        left: 50%;
+        bottom: 10%;
+
+        transform: translateX(-50%);
+        
+        z-index: 11;
+
+        border-radius: 50%;
+
+        background-color: $font2-color;
+
+        label {
+            width: 100%;
+            height: 100%;
+
+            @extend .flex-center;
+
+            #parallax-pause {
+                display: block;
+            }
+
+            #parallax-play {
+                display: none;
+                height: 70%;
+            }
+
+            path {
+                fill: $back2-color;
+
+            }
+    
+            svg {
+                height: 95%;
+            }
+
+        }
+        .play-pause {
+            width: 100%;
+            height: 100%;
+
+            position: absolute;
+            top: 0;
+    
+            appearance: none;
+    
+            cursor: pointer;
+        } 
+ 
+    }
+}
+
+#parallax {
+    max-width: 100vw; 
+    height: 100vh;
+    image-rendering: pixelated;
+
+    background-color: #0E1B31;
+
+    /*&:hover {
+        @include paralaxAnimation($isAnime: true);
+    }*/
+
+    @include paralaxAnimation();
+
+}
+
+@keyframes parallax {
+    from { transform: translateX(0%); }
+    to { transform: translateX(-50%); }
+}
+
+///////////////////////////////
+// Responsive, YES YES YES.
+///////////////////////////////
+
