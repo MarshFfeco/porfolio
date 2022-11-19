@@ -2,11 +2,12 @@ $font-color: #BF56B8;
 $font2-color: #F2E18D; 
 $back-color: #0D0C0C;
 $back2-color: #102040;
+$found-color: #0E1B31;
 $lighthen: #F2B8A2;
 $nighten: #30618C;
 
 
-@import  "_navbar", "_main", "_parallax", "_footer";
+@import  "_navbar", "_main", "_parallax", "_effects", "_footer";
 
 
 * {
@@ -53,6 +54,10 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.grid {
+    display: grid;
 }
 
 

@@ -17,5 +17,5 @@ Meu portfolio
 - [Music](https://slaleky.itch.io/retro-and-electronic-music-pack)
 
 ## Versão
-- 0.3.0
+- 0.4.0
 

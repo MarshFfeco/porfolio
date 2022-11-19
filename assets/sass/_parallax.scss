@@ -92,7 +92,7 @@ $images: (
     height: 100vh;
     image-rendering: pixelated;
 
-    background-color: #0E1B31;
+    background-color: $found-color;
 
     /*&:hover {
         @include paralaxAnimation($isAnime: true);

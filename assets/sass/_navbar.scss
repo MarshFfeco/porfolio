@@ -21,7 +21,8 @@ $transition-velocity: 300ms;
         width: 5rem;
 
         box-shadow: 4px 0px 10px rgba(255, 255, 255, 0.1);
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: mix(rgba(0, 0, 0, 0.1), $back-color, 50%);
+        
     }
 
     .nav-ul {
@@ -46,8 +47,6 @@ $transition-velocity: 300ms;
                 background-color: $back-color;
     
                 .nav-link {
-                    filter: grayscale(0) opacity(1);
-    
                     .nav-text {
                         left: 6rem;
                         opacity: 1;
@@ -56,7 +55,7 @@ $transition-velocity: 300ms;
                     }
 
                     .nav-icon {
-                        color: $font-color;
+                        color: darken($font-color, 0%);
                     }
                 }
             }  
@@ -66,10 +65,8 @@ $transition-velocity: 300ms;
                 height: 100%;
         
                 color: $back-color;
-                filter: grayscale(100%) opacity(0.5);
+                
                 @extend .flex-center;
-    
-                transition: $transition-velocity;
     
                 .nav-text {
                     position: absolute;
@@ -105,7 +102,8 @@ $transition-velocity: 300ms;
                 }
     
                 .nav-icon {
-                    color: $back2-color;
+                    color: darken($font-color, 30%);
+                    transition: $transition-velocity;
                 }
             }
         }
