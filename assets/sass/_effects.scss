@@ -1,0 +1,90 @@
+@mixin effect-color($index) {
+    @if $index == 1 {
+        background-color: $found-color;
+      } @else if $index == 2 {
+        background-color: $back-color;
+      } 
+}
+
+#effects {
+    position: relative;
+    max-width: 100vw;
+    height: 100vh;
+
+    background-color: $back2-color;
+
+    @extend .grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    @for $index from 1 through 2 {
+        .effect-#{$index} {
+            @include effect-color($index);
+        }
+    }
+
+    .curve {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 400px;
+            height: 50%;
+            border-bottom-left-radius: 50%;
+            top: 0%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            background-color: $back-color;
+        }
+
+        &::after{
+            content: "";
+            display: block;
+            position: absolute;
+            width: 400px;
+            height: 50%;
+            border-top-right-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            background-color: $found-color;
+        }
+    }
+}
+
+///////////////////////////////
+// Responsive, YES YES YES.
+///////////////////////////////
+
+@media (max-width: 600px) {
+    #effects {
+        .curve {
+            width: 100%;
+            height: 100%;
+
+            &::before {
+                width: 50%;
+                height: 20%;
+                border-top-right-radius: 0%;
+                border-top-left-radius: 50%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            &::after{
+                width: 50%;
+                height: 20%;
+                border-bottom-left-radius: 0%;
+                border-bottom-right-radius: 50%;
+                top: 50%;
+                left: 0%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+}

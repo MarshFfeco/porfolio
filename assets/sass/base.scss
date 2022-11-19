@@ -1,11 +1,16 @@
-$font-color: #F2EC99; 
-$font2-color: #BFB169; 
-$font3-color: #A69668; 
+$font-color: #BF56B8; 
+$font2-color: #F2E18D; 
 $back-color: #0D0C0C;
-$back2-color: #262423;
+$back2-color: #102040;
+$found-color: #0E1B31;
+$lighthen: #F2B8A2;
+$nighten: #30618C;
+
+
+@import  "_navbar", "_main", "_parallax", "_effects", "_footer";
+
 
 * {
-    max-width: 100vw;
     font-family: 'hack-font', sans-serif;
     
     font-size: 16px;
@@ -14,6 +19,7 @@ $back2-color: #262423;
     padding: 0px;
 
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -27,6 +33,7 @@ body {
 
     &::-webkit-scrollbar-thumb {
         background-color: $font-color;
+        border-radius: 5px;
     }
 
     main, footer {
@@ -49,8 +56,10 @@ p {
     align-items: center;
 }
 
+.grid {
+    display: grid;
+}
 
-@import "_main", "_navbar", "_footer";
 
 @media screen and (max-width: 600px) {
     body {
