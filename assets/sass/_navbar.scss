@@ -1,4 +1,4 @@
-$transition-velocity: 300ms;
+
 
 .nav {
     width: 3rem;
@@ -116,7 +116,7 @@ $transition-velocity: 300ms;
 
 @media screen and (max-width: 600px) {
     .nav {
-        width: 100%;
+        width: 100vw;
         height: 5vh;
 
         border-top-right-radius: 0;

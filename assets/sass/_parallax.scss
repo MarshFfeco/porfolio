@@ -24,13 +24,16 @@ $images: (
             background: url($image) repeat-x;
             background-size: 50%;
     
-            z-index: $i;
+            z-index: $i + 10;
         }
             $i: $i + 1;
     }
 }
 
 .parallax-container {
+    max-width: 100vw;
+
+    overflow-x: hidden;
     .container-PP {
         width: 50px;
         height: 50px;
@@ -48,8 +51,7 @@ $images: (
         background-color: $font2-color;
 
         label {
-            width: 100%;
-            height: 100%;
+            @extend .hundredWH;
 
             @extend .flex-center;
 
@@ -73,8 +75,7 @@ $images: (
 
         }
         .play-pause {
-            width: 100%;
-            height: 100%;
+            @extend .hundredWH;
 
             position: absolute;
             top: 0;
@@ -88,8 +89,9 @@ $images: (
 }
 
 #parallax {
-    max-width: 100vw; 
-    height: 100vh;
+    @extend .displayUpper;
+    @extend .maxWidthHeight;
+
     image-rendering: pixelated;
 
     background-color: $found-color;
@@ -111,3 +113,15 @@ $images: (
 // Responsive, YES YES YES.
 ///////////////////////////////
 
+@media (max-width: 600px) {
+    .configParallax {
+        width: 100%;
+        &.items {
+            background-size: 100%;
+        }
+    }
+
+    .container-PP {
+        display: none;
+    }
+}
