@@ -1,13 +1,119 @@
-footer {
-    height: 50vh;
-    position: sticky;
-
+.effectPosition {
+    position: absolute;
+    top: 0;
     left: 0;
+}
+
+#contact {
+    @extend .maxWidthHeight;
+
+    position: sticky;
     bottom: 0;
 
-    z-index: -1;
+    z-index: 1;
 
+    @extend .grid;
+    grid-template-rows: 1fr 0.1fr;
+    gap: 10px;
+
+    background-color: $nighten;
+
+    .social-media {
+        width: 20rem;
+        height: 10rem;
+        position: relative;
+        padding: 10px;
+
+        justify-self: center;
+        align-self: center;
+
+        @extend .flex-center;
+        flex-direction: row;
+        column-gap: 50px;
+
+        border-radius: 20px;
+
+        box-shadow: inset 0 -6px 10px -8px rgba(0, 0, 0, 0.3), inset 0 6px 10px -8px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+
+        &__link {
+            color: darken($font-color, 20%);
+            transition: $transition-velocity;
+        }
+
+        &__effect {
+            width: 40%;
+            height: 100%;
+
+            @extend .flex-center;
+
+            transform: translateZ(0);
+
+            transition: transform $transition-velocity, filter $transition-velocity / 2;
+            &__up,
+            &__down {
+                @extend .effectPosition;
+
+                @extend .flex-center;
+                @extend .hundredWH;
+
+                background-color: white;
+                transition: $transition-velocity;
+            }
+
+            &__up {
+                clip-path: inset(0 0 50% 0);
+                border-radius: 20px;
+              }
+          
+            &__down {
+                clip-path: inset(50% 0 0 0);
+                border-radius: 20px;
+            }
+
+            &:hover {
+                .social-media {
+                    &__effect {
+                        &__up {
+                            transform: translateY(-50%) scale(1.2);
+                            }
+                    
+                        &__down {
+                            transform: translateY(50%) scale(1.2);
+                        }
+                    }
+
+                    &__block {
+                        position: absolute;
+                        z-index: 10;
+                    }
     
+                    &__link {
+                        color: darken($font-color, 0%);
+                    }
+                }
+            }
+        }
+    }
 
-    background-color: aquamarine;
+    .copyright {
+        width: 80%;
+
+        margin: 0 auto;
+
+        border-radius: 20px;
+
+        border-top: 1px solid $font2-color;
+        justify-self: end;
+
+        p {
+            padding-top: 25px;
+            text-align: center;
+            color: $font2-color;
+        }
+
+        @media screen and (max-width: 600px) {
+            width: 100%;
+        }
+    }
 }

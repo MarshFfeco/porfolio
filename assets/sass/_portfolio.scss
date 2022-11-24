@@ -1,0 +1,121 @@
+#portfolio {
+    @extend .displayUpper;
+    @extend .maxWidthHeight;
+
+    background-color: $found-color;
+
+    @extend .grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr;
+    gap: 10px;
+    
+    h1 {
+        color: $font2-color;
+        @extend .displayUpper;
+        justify-self: center;
+        align-self: center;
+        font-size: 2em;
+    }
+
+    .portfolio {
+        &__container {
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            @extend .grid;
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        &__card {
+            opacity: .5;
+
+            @extend .grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 2fr .5fr 0.5fr;
+            gap: 10px;
+            padding: 10px;
+
+            cursor: pointer;
+
+            transition: opacity 200ms;
+
+            .figure-1 {
+                background: url("../image/GH/LS.png");
+                @extend .image-config;
+                
+            }
+            .figure-2 {
+                background: url("../image/GH/LOSU.png");
+                @extend .image-config;
+                
+            }
+            .figure-3 {
+                background: url("../image/GH/CF.png");
+                @extend .image-config;
+                
+            }
+            .figure-4 {
+                background: url("../image/GH/CC.png");
+                @extend .image-config;
+                
+            }
+
+            a {
+                @extend .flex-center;
+                width: 100%;
+                border-radius: 20px;
+                transform: scale(0.7);
+
+                background-color: white;
+
+                transition: transform 200ms cubic-bezier(0.68, -0.55, 0.265, 1.55);;
+
+                i {
+                    color: black;
+                }
+
+                &:hover {
+                    transform: scale(1);
+                }
+            }
+
+            h2 {
+                align-self: center;
+                text-align: center;
+                color: $font2-color;
+            }
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+///////////////////////////////
+// Extends, YES YES YES.
+///////////////////////////////
+.image-config {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+///////////////////////////////
+// Responsive, YES YES YES.
+///////////////////////////////
+
+@media (max-width: 600px) {
+    #portfolio {
+        grid-template-columns: 1fr;
+        grid-template-rows: 100px 2fr;
+
+        h1 {
+            justify-self: center;
+            align-self: center;
+            font-size: 2em;
+        }
+    }
+}

@@ -1,39 +1,3 @@
-* {
-  font-family: "hack-font", sans-serif;
-  font-size: 16px;
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
-
-body::-webkit-scrollbar {
-  width: 0.25rem;
-}
-body::-webkit-scrollbar-track {
-  background-color: #0D0C0C;
-}
-body::-webkit-scrollbar-thumb {
-  background-color: #F2EC99;
-}
-body main, body footer {
-  padding-left: 4rem;
-}
-
-a {
-  text-decoration: none;
-}
-
-p {
-  color: #F2EC99;
-}
-
-.flex-center, .nav .nav-ul .nav-li .nav-link, .nav .nav-ul .nav-li, .nav .nav-ul {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .nav {
   width: 3rem;
   height: 100vh;
@@ -43,11 +7,13 @@ p {
   z-index: 100;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-  background-color: #F2EC99;
-  transition: width 200ms ease-in-out;
+  background-color: transparent;
+  transition: all 200ms ease-in-out;
 }
 .nav:hover {
   width: 5rem;
+  box-shadow: 4px 0px 10px rgba(255, 255, 255, 0.1);
+  background-color: rgba(12, 11, 11, 0.55);
 }
 .nav .nav-ul {
   height: 100%;
@@ -57,7 +23,7 @@ p {
 .nav .nav-ul .nav-li {
   position: relative;
   width: 100%;
-  height: 80px;
+  height: 88px;
 }
 .nav .nav-ul .nav-li:last-child {
   margin-top: auto;
@@ -69,9 +35,6 @@ p {
 .nav .nav-ul .nav-li:hover {
   background-color: #0D0C0C;
 }
-.nav .nav-ul .nav-li:hover .nav-link {
-  filter: grayscale(0) opacity(1);
-}
 .nav .nav-ul .nav-li:hover .nav-link .nav-text {
   left: 6rem;
   opacity: 1;
@@ -79,44 +42,45 @@ p {
   pointer-events: auto;
 }
 .nav .nav-ul .nav-li:hover .nav-link .nav-icon {
-  color: #F2EC99;
+  color: #bf56b8;
 }
 .nav .nav-ul .nav-li .nav-link {
-  height: 50px;
-  color: #262423;
-  filter: grayscale(100%) opacity(0.5);
-  transition: 300ms;
+  width: 100%;
+  height: 100%;
+  color: #0D0C0C;
 }
 .nav .nav-ul .nav-li .nav-link .nav-text {
   position: absolute;
-  top: 10px;
+  top: 50%;
   left: 0;
+  transform: translateY(-50%);
   padding: 5px 8px;
   opacity: 0;
   border-radius: 5px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
   pointer-events: none;
   transition: all 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  background-color: #F2EC99;
+  background-color: #BF56B8;
 }
 .nav .nav-ul .nav-li .nav-link .nav-text::before {
   position: absolute;
   content: "";
   height: 8px;
   width: 8px;
-  background: #F2EC99;
-  top: 40%;
+  background: #BF56B8;
+  top: 50%;
   left: -3px;
-  transform: rotate(45deg);
+  transform: translateY(-50%) rotate(45deg);
   transition: all 3 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 .nav .nav-ul .nav-li .nav-link .nav-icon {
-  color: #262423;
+  color: #5a2256;
+  transition: 300ms;
 }
 
 @media screen and (max-width: 600px) {
   .nav {
-    width: 100%;
+    width: 100vw;
     height: 5vh;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -125,6 +89,10 @@ p {
   }
   .nav:hover {
     width: 100%;
+    /* OLD */
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
+    /* NEW */
   }
   .nav .nav-ul {
     flex-direction: row;
@@ -151,100 +119,92 @@ p {
   }
 }
 main {
+  background-color: red;
+}
+
+.configParallax, #parallax .parallax-item-7, #parallax .parallax-item-6, #parallax .parallax-item-5, #parallax .parallax-item-4, #parallax .parallax-item-3, #parallax .parallax-item-2, #parallax .parallax-item-1 {
+  width: 200%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.parallax-container {
   max-width: 100vw;
-  height: 100vh;
-  background-color: #0D0C0C;
+  overflow-x: hidden;
+}
+.parallax-container .container-PP {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%);
+  z-index: 11;
+  border-radius: 50%;
+  background-color: #F2E18D;
+}
+.parallax-container .container-PP label #parallax-pause {
+  display: block;
+}
+.parallax-container .container-PP label #parallax-play {
+  display: none;
+  height: 70%;
+}
+.parallax-container .container-PP label path {
+  fill: #102040;
+}
+.parallax-container .container-PP label svg {
+  height: 95%;
+}
+.parallax-container .container-PP .play-pause {
+  position: absolute;
+  top: 0;
+  appearance: none;
+  cursor: pointer;
 }
 
 #parallax {
-  width: 100vw;
-  height: 100vh;
-  background-color: #19335E;
   image-rendering: pixelated;
-}
-#parallax:hover .parallax-item-1 {
-  width: 200%;
-  height: 100%;
-  position: absolute;
-  top: 0vh;
-  background: url("../../assets/image/parallax/bg0SKY.png");
-  background-repeat: repeat-x;
-  background-size: 50%;
-  animation: parallax 13s linear infinite;
-  z-index: 1;
-}
-#parallax:hover .parallax-item-2 {
-  width: 200%;
-  height: 100%;
-  position: absolute;
-  top: 0vh;
-  background: url("../../assets/image/parallax/bg0moon-and-stars.png");
-  background-repeat: repeat-x;
-  background-size: 50%;
-  animation: parallax 11s linear infinite;
-  z-index: 2;
-}
-#parallax:hover .parallax-item-3 {
-  width: 200%;
-  height: 100%;
-  position: absolute;
-  top: 0vh;
-  background: url("../../assets/image/parallax/bg01.png");
-  background-repeat: repeat-x;
-  background-size: 50%;
-  animation: parallax 8s linear infinite;
-  z-index: 3;
-}
-#parallax:hover .parallax-item-4 {
-  width: 200%;
-  height: 100%;
-  position: absolute;
-  top: 0vh;
-  background: url("../..//assets/image/parallax/bg02.png");
-  background-repeat: repeat-x;
-  background-size: 50%;
-  animation: parallax 4s linear infinite;
-  z-index: 4;
+  background-color: #0E1B31;
+  /*&:hover {
+      @include paralaxAnimation($isAnime: true);
+  }*/
 }
 #parallax .parallax-item-1 {
-  width: 200%;
-  height: 100%;
-  position: absolute;
-  top: 0vh;
-  background: url("../../assets/image/parallax/bg0SKY.png");
-  background-repeat: repeat-x;
+  background: url("../../assets/image/parallax/bg0sky.png") repeat-x;
   background-size: 50%;
-  z-index: 1;
+  z-index: 11;
 }
 #parallax .parallax-item-2 {
-  width: 200%;
-  height: 100%;
-  position: absolute;
-  top: 0vh;
-  background: url("../../assets/image/parallax/bg0moon-and-stars.png");
-  background-repeat: repeat-x;
+  background: url("../../assets/image/parallax/bg0moon-and-stars.png") repeat-x;
   background-size: 50%;
-  z-index: 2;
+  z-index: 12;
 }
 #parallax .parallax-item-3 {
-  width: 200%;
-  height: 100%;
-  position: absolute;
-  top: 0vh;
-  background: url("../../assets/image/parallax/bg01.png");
-  background-repeat: repeat-x;
+  background: url("../../assets/image/parallax/bg01.png") repeat-x;
   background-size: 50%;
-  z-index: 3;
+  z-index: 13;
 }
 #parallax .parallax-item-4 {
-  width: 200%;
-  height: 100%;
-  position: absolute;
-  top: 0vh;
-  background: url("../..//assets/image/parallax/bg02.png");
-  background-repeat: repeat-x;
+  background: url("../../assets/image/parallax/bg02.png") repeat-x;
   background-size: 50%;
-  z-index: 4;
+  z-index: 14;
+}
+#parallax .parallax-item-5 {
+  background: url("../../assets/image/parallax/bg03.png") repeat-x;
+  background-size: 50%;
+  z-index: 15;
+}
+#parallax .parallax-item-6 {
+  background: url("../../assets/image/parallax/bg04.png") repeat-x;
+  background-size: 50%;
+  z-index: 16;
+}
+#parallax .parallax-item-7 {
+  background: url("../../assets/image/parallax/bg05.png") repeat-x;
+  background-size: 50%;
+  z-index: 17;
 }
 
 @keyframes parallax {
@@ -255,95 +215,234 @@ main {
     transform: translateX(-50%);
   }
 }
-@media screen and (max-width: 600px) {
-  #parallax .parallax-item-1 {
-    width: 200%;
-    height: 100%;
-    position: absolute;
-    top: 5;
-    background: url("../../assets/image/parallax/bg0SKY.png");
-    background-repeat: repeat-x;
-    background-size: 50%;
-    z-index: 1;
+@media (max-width: 600px) {
+  .configParallax, #parallax .parallax-item-1, #parallax .parallax-item-2, #parallax .parallax-item-3, #parallax .parallax-item-4, #parallax .parallax-item-5, #parallax .parallax-item-6, #parallax .parallax-item-7 {
+    width: 100%;
   }
-  #parallax .parallax-item-2 {
-    width: 200%;
-    height: 100%;
-    position: absolute;
-    top: 5;
-    background: url("../../assets/image/parallax/bg0moon-and-stars.png");
-    background-repeat: repeat-x;
-    background-size: 50%;
-    z-index: 2;
+  .configParallax.items, #parallax .items.parallax-item-1, #parallax .items.parallax-item-2, #parallax .items.parallax-item-3, #parallax .items.parallax-item-4, #parallax .items.parallax-item-5, #parallax .items.parallax-item-6, #parallax .items.parallax-item-7 {
+    background-size: 100%;
   }
-  #parallax .parallax-item-3 {
-    width: 200%;
-    height: 100%;
-    position: absolute;
-    top: 5;
-    background: url("../../assets/image/parallax/bg01.png");
-    background-repeat: repeat-x;
-    background-size: 50%;
-    z-index: 3;
-  }
-  #parallax .parallax-item-4 {
-    width: 200%;
-    height: 100%;
-    position: absolute;
-    top: 5;
-    background: url("../..//assets/image/parallax/bg02.png");
-    background-repeat: repeat-x;
-    background-size: 50%;
-    z-index: 4;
-  }
-  #parallax:hover .parallax-item-1 {
-    width: 200%;
-    height: 100%;
-    position: absolute;
-    top: 6;
-    background: url("../../assets/image/parallax/bg0SKY.png");
-    background-repeat: repeat-x;
-    background-size: 50%;
-    z-index: 1;
-  }
-  #parallax:hover .parallax-item-2 {
-    width: 200%;
-    height: 100%;
-    position: absolute;
-    top: 6;
-    background: url("../../assets/image/parallax/bg0moon-and-stars.png");
-    background-repeat: repeat-x;
-    background-size: 50%;
-    z-index: 2;
-  }
-  #parallax:hover .parallax-item-3 {
-    width: 200%;
-    height: 100%;
-    position: absolute;
-    top: 6;
-    background: url("../../assets/image/parallax/bg01.png");
-    background-repeat: repeat-x;
-    background-size: 50%;
-    z-index: 3;
-  }
-  #parallax:hover .parallax-item-4 {
-    width: 200%;
-    height: 100%;
-    position: absolute;
-    top: 6;
-    background: url("../..//assets/image/parallax/bg02.png");
-    background-repeat: repeat-x;
-    background-size: 50%;
-    z-index: 4;
+  .container-PP {
+    display: none;
   }
 }
-footer {
-  height: 50vh;
-  position: sticky;
+#portfolio {
+  background-color: #0E1B31;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr;
+  gap: 10px;
+}
+#portfolio h1 {
+  color: #F2E18D;
+  justify-self: center;
+  align-self: center;
+  font-size: 2em;
+}
+#portfolio .portfolio__container {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+#portfolio .portfolio__card {
+  opacity: 0.5;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 0.5fr 0.5fr;
+  gap: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: opacity 200ms;
+}
+#portfolio .portfolio__card .figure-1 {
+  background: url("../image/GH/LS.png");
+}
+#portfolio .portfolio__card .figure-2 {
+  background: url("../image/GH/LOSU.png");
+}
+#portfolio .portfolio__card .figure-3 {
+  background: url("../image/GH/CF.png");
+}
+#portfolio .portfolio__card .figure-4 {
+  background: url("../image/GH/CC.png");
+}
+#portfolio .portfolio__card a {
+  width: 100%;
+  border-radius: 20px;
+  transform: scale(0.7);
+  background-color: white;
+  transition: transform 200ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+#portfolio .portfolio__card a i {
+  color: black;
+}
+#portfolio .portfolio__card a:hover {
+  transform: scale(1);
+}
+#portfolio .portfolio__card h2 {
+  align-self: center;
+  text-align: center;
+  color: #F2E18D;
+}
+#portfolio .portfolio__card:hover {
+  opacity: 1;
+}
+
+.image-config, #portfolio .portfolio__card .figure-1, #portfolio .portfolio__card .figure-2, #portfolio .portfolio__card .figure-3, #portfolio .portfolio__card .figure-4 {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media (max-width: 600px) {
+  #portfolio {
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 2fr;
+  }
+  #portfolio h1 {
+    justify-self: center;
+    align-self: center;
+    font-size: 2em;
+  }
+}
+.effectPosition, #contact .social-media__effect__up, #contact .social-media__effect__down {
+  position: absolute;
+  top: 0;
   left: 0;
+}
+
+#contact {
+  position: sticky;
   bottom: 0;
-  z-index: -1;
-  background-color: aquamarine;
+  z-index: 1;
+  grid-template-rows: 1fr 0.1fr;
+  gap: 10px;
+  background-color: #30618C;
+}
+#contact .social-media {
+  width: 20rem;
+  height: 10rem;
+  position: relative;
+  padding: 10px;
+  justify-self: center;
+  align-self: center;
+  flex-direction: row;
+  column-gap: 50px;
+  border-radius: 20px;
+  box-shadow: inset 0 -6px 10px -8px rgba(0, 0, 0, 0.3), inset 0 6px 10px -8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+#contact .social-media__link {
+  color: #7f307a;
+  transition: 300ms;
+}
+#contact .social-media__effect {
+  width: 40%;
+  height: 100%;
+  transform: translateZ(0);
+  transition: transform 300ms, filter 150ms;
+}
+#contact .social-media__effect__up, #contact .social-media__effect__down {
+  background-color: white;
+  transition: 300ms;
+}
+#contact .social-media__effect__up {
+  clip-path: inset(0 0 50% 0);
+  border-radius: 20px;
+}
+#contact .social-media__effect__down {
+  clip-path: inset(50% 0 0 0);
+  border-radius: 20px;
+}
+#contact .social-media__effect:hover .social-media__effect__up {
+  transform: translateY(-50%) scale(1.2);
+}
+#contact .social-media__effect:hover .social-media__effect__down {
+  transform: translateY(50%) scale(1.2);
+}
+#contact .social-media__effect:hover .social-media__block {
+  position: absolute;
+  z-index: 10;
+}
+#contact .social-media__effect:hover .social-media__link {
+  color: #bf56b8;
+}
+#contact .copyright {
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 20px;
+  border-top: 1px solid #F2E18D;
+  justify-self: end;
+}
+#contact .copyright p {
+  padding-top: 25px;
+  text-align: center;
+  color: #F2E18D;
+}
+@media screen and (max-width: 600px) {
+  #contact .copyright {
+    width: 100%;
+  }
+}
+
+* {
+  font-family: "hack-font", sans-serif;
+  font-size: 16px;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.wrapper {
+  max-width: 100vw;
+}
+
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+body::-webkit-scrollbar-track {
+  background-color: #0D0C0C;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #BF56B8;
+  border-radius: 5px;
+}
+
+.displayUpper, main, #parallax, #portfolio, #portfolio h1 {
+  position: relative;
+  z-index: 10;
+}
+
+.hundredWH, .parallax-container .container-PP label, .parallax-container .container-PP .play-pause, #contact .social-media__effect__up, #contact .social-media__effect__down {
+  width: 100%;
+  height: 100%;
+}
+
+.maxWidthHeight, main, #parallax, #portfolio, #contact {
+  max-width: 100vw;
+  max-height: 100vh;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+.flex-center, .nav .nav-ul, .nav .nav-ul .nav-li, .nav .nav-ul .nav-li .nav-link, .parallax-container .container-PP label, #portfolio .portfolio__card a, #contact .social-media, #contact .social-media__effect, #contact .social-media__effect__up, #contact .social-media__effect__down {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid, #portfolio, #portfolio .portfolio__container, #portfolio .portfolio__card, #contact {
+  display: grid;
 }
 
 @media screen and (max-width: 600px) {
