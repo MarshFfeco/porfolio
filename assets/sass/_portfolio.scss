@@ -29,6 +29,7 @@
         }
 
         &__card {
+            position: relative;
             opacity: .5;
 
             @extend .grid;
@@ -40,6 +41,19 @@
             cursor: pointer;
 
             transition: opacity 200ms;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                @extend .hundredWH;
+
+
+                border-right: 2px solid $font2-color;
+                border-bottom: 2px solid $font2-color;
+            }
 
             .figure-1 {
                 background: url("../image/GH/LS.png");
