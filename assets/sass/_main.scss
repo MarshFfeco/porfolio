@@ -24,14 +24,6 @@
                     color: darken($font-color, 30%);
 
                     font-size: 3em;
-
-                    @media (max-width: 800px) {
-                        font-size: 3em;
-                    }
-
-                    @media (max-width: 743px) {
-                        font-size: 3em;
-                    }
                 }
 
                 &__effect {
@@ -137,7 +129,7 @@
 // Responsive, YES YES YES.
 ///////////////////////////////
 
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
     #about {
         .about {
             &__container {
@@ -149,7 +141,7 @@
                     height: 100%;
                     padding-left: 0;
 
-                    font-size: 1.5em;
+                    font-size: 0.7em !important;
 
                     justify-content: center ;
                 }
