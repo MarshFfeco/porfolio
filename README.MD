@@ -17,6 +17,6 @@ Meu portfolio https://marshffeco.github.io/portfolio/
 - [Music](https://slaleky.itch.io/retro-and-electronic-music-pack)
 
 ## Versão
-- 0.9.10
+- 1.0.0
 
 
